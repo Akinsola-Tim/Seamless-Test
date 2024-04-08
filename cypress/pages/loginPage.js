@@ -19,12 +19,20 @@ class loginPage{
         this.elements.passwordInput().type(password);
     }
 
-    clickLogin(login)
+    clickLogin()
     {
         this.elements.loginBtn().click();
     }
 
-    
+    loginSiteUser(a, b)
+    {
+        cy.visit(this.elements.baseURL());
+        cy.wait(2000);
+        this.enterUsername(a);
+        this.enterPassword(b);
+        this.clickLogin();
+        cy.wait(2000);
+    }
     
 }
 

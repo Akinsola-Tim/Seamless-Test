@@ -1,14 +1,12 @@
 import deleteUserPage from "../pages/deleteUserPage";
+import loginPage from "../pages/loginPage";
 
 describe('Delete User Test', () => {
 
     beforeEach(function() {
       // executes prior each test within it block
-      cy.visit('https://opensource-demo.orangehrmlive.com/');
-      cy.get(':nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input').type('Admin')
-      cy.get(':nth-child(3) > .oxd-input-group > :nth-child(2) > .oxd-input').type('admin123')
-      cy.get('.oxd-button').click()
-      cy.wait(2000)
+      const loginUsers = new loginPage();
+      loginUsers.loginSiteUser('Admin','admin123');
    })
    
     it('Delete User Successful', () => {

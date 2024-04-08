@@ -1,14 +1,12 @@
 import createUserPage from "../pages/createUserPage";
+import loginPage from "../pages/loginPage";
 
 describe('Create User Test', () => {
 
     beforeEach(function() {
       // executes prior each test within it block
-      cy.visit('https://opensource-demo.orangehrmlive.com/');
-      cy.get(':nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input').type('Admin')
-      cy.get(':nth-child(3) > .oxd-input-group > :nth-child(2) > .oxd-input').type('admin123')
-      cy.get('.oxd-button').click()
-      //loginUserAction('Admin','admin123');
+      const loginUsers = new loginPage();
+      loginUsers.loginSiteUser('Admin','admin123');
    })
    
     it('Create User Successful', () => {
@@ -55,13 +53,13 @@ describe('Create User Test', () => {
       createUserObj.selectAutoCompleteOption();
       createUserObj.statusDropdown();
       createUserObj.selectOption();
-      createUserObj.adminNameInput('Tola01');
-      createUserObj.passwdStrongInput('admin@123');
-      createUserObj.confirmPasswdStrongInput('admin@123');
+      createUserObj.adminNameInput('Tol02');
+      createUserObj.passwdStrongInput('admin@1');
+      createUserObj.confirmPasswdStrongInput('admin@1');
       createUserObj.clickSave();
       //createUserObj.getErrorMessage().should('have.text', 'Should have at least 7 characters')
       //createUserObj.getErrorMessage().should('Should have at least 7 characters')
-      cy.get('.oxd-input-field-error-message').as('errorText').wait(2000);
+      cy.get('.oxd-input-field-error-message').as('errorText').wait(6000);
       cy.get('@errorText').should('have.text', 'Should have at least 7 characters')
 
       //msg: Should have at least 7 characters
@@ -78,8 +76,8 @@ describe('Create User Test', () => {
       createUserObj.statusDropdown();
       createUserObj.selectOption();
       createUserObj.adminNameInput('Giffy11222');
-      createUserObj.passwdStrongInput('admint');
-      createUserObj.confirmPasswdStrongInput('admint');
+      createUserObj.passwdStrongInput('admintyu');
+      createUserObj.confirmPasswdStrongInput('admintyu');
       createUserObj.clickSave();
       //createUserObj.getErrorMessage().should('have.text', 'Your password must contain minimum 1 number')
       cy.get('.oxd-input-field-error-message').as('errorText').wait(2000);
